@@ -1,0 +1,456 @@
+event_id,service,severity,message,gt_category,gt_root_cause,gt_remediation,is_labeled
+E0091,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0100,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0267,notification-svc,INFO,GET /health 200 2ms,,,,no
+E0016,search-api,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",capacity,rate_limit_breach,add_backpressure_and_request_quota_increase,yes
+E0334,image-cdn,INFO,GET /favicon.ico 404 1ms,,,,no
+E0365,search-api,INFO,INFO scheduled job nightly-report started,,,,no
+E0281,image-cdn,INFO,GET /favicon.ico 404 1ms,,,,no
+E0108,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0378,payments-worker,INFO,INFO scheduled job nightly-report started,,,,no
+E0183,inventory-svc,ERROR,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0452,auth-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0337,image-cdn,INFO,INFO scheduled job nightly-report started,,,,no
+E0094,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0355,payments-worker,INFO,INFO scheduled job nightly-report started,,,,no
+E0442,notification-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0168,user-db-proxy,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0415,gateway,INFO,GET /favicon.ico 404 1ms,,,,no
+E0215,auth-svc,WARN,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0208,checkout-api,ERROR,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0032,notification-svc,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",dependency_failure,db_connection_pool_exhausted,increase_pool_size_and_add_timeout_retry,yes
+E0217,search-api,WARN,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0314,search-api,INFO,GET /health 200 2ms,,,,no
+E0155,image-cdn,WARN,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0309,checkout-api,INFO,GET /health 200 2ms,,,,no
+E0447,payments-worker,INFO,INFO cache warmup complete in 120ms,,,,no
+E0176,inventory-svc,ERROR,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),,,,no
+E0308,payments-worker,INFO,GET /favicon.ico 404 1ms,,,,no
+E0067,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0005,search-api,ERROR,"disk usage 96% on /var/log, write failures beginning",resource_exhaustion,disk_full,rotate_logs_and_expand_volume,yes
+E0056,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0329,notification-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0159,image-cdn,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0435,gateway,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0194,checkout-api,WARN,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0361,image-cdn,INFO,INFO cache warmup complete in 120ms,,,,no
+E0396,image-cdn,INFO,GET /favicon.ico 404 1ms,,,,no
+E0370,checkout-api,INFO,GET /favicon.ico 404 1ms,,,,no
+E0399,user-db-proxy,INFO,GET /health 200 2ms,,,,no
+E0446,inventory-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0066,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0428,inventory-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0299,notification-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0228,notification-svc,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0052,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0072,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0205,notification-svc,WARN,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0272,user-db-proxy,INFO,INFO user session refreshed,,,,no
+E0258,notification-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0101,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0293,recommendation-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0006,payments-worker,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",capacity,rate_limit_breach,add_backpressure_and_request_quota_increase,yes
+E0009,auth-svc,ERROR,kafka consumer lag 240000 msgs on topic payments.events,capacity,consumer_lag,scale_consumers_and_check_poison_message,yes
+E0276,notification-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0439,inventory-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0204,image-cdn,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0408,inventory-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0288,image-cdn,INFO,INFO user session refreshed,,,,no
+E0199,recommendation-svc,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0164,payments-worker,WARN,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0420,user-db-proxy,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0330,notification-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0041,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0058,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0013,checkout-api,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",dependency_failure,upstream_outage,enable_fallback_queue_and_alert_vendor,yes
+E0371,inventory-svc,INFO,GET /health 200 2ms,,,,no
+E0134,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0025,recommendation-svc,ERROR,"disk usage 96% on /var/log, write failures beginning",resource_exhaustion,disk_full,rotate_logs_and_expand_volume,yes
+E0029,payments-worker,ERROR,kafka consumer lag 240000 msgs on topic payments.events,capacity,consumer_lag,scale_consumers_and_check_poison_message,yes
+E0434,search-api,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0201,search-api,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0104,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0359,gateway,INFO,GET /favicon.ico 404 1ms,,,,no
+E0441,recommendation-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0304,recommendation-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0221,gateway,ERROR,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),,,,no
+E0036,auth-svc,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",capacity,rate_limit_breach,add_backpressure_and_request_quota_increase,yes
+E0390,gateway,INFO,GET /favicon.ico 404 1ms,,,,no
+E0003,notification-svc,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",dependency_failure,upstream_outage,enable_fallback_queue_and_alert_vendor,yes
+E0163,auth-svc,WARN,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0375,search-api,INFO,INFO cache warmup complete in 120ms,,,,no
+E0200,inventory-svc,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0417,checkout-api,INFO,INFO scheduled job nightly-report started,,,,no
+E0403,recommendation-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0213,image-cdn,ERROR,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0255,user-db-proxy,WARN,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0423,notification-svc,INFO,INFO user session refreshed,,,,no
+E0193,recommendation-svc,ERROR,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0050,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0325,notification-svc,INFO,INFO user session refreshed,,,,no
+E0133,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0110,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0387,notification-svc,INFO,INFO user session refreshed,,,,no
+E0223,notification-svc,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0055,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0263,user-db-proxy,INFO,INFO scheduled job nightly-report started,,,,no
+E0180,inventory-svc,WARN,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),,,,no
+E0182,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0045,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0057,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0216,gateway,WARN,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0344,image-cdn,INFO,INFO scheduled job nightly-report started,,,,no
+E0320,inventory-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0161,notification-svc,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0185,checkout-api,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0172,search-api,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0103,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0377,payments-worker,INFO,INFO cache warmup complete in 120ms,,,,no
+E0273,user-db-proxy,INFO,GET /favicon.ico 404 1ms,,,,no
+E0132,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0230,inventory-svc,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0177,inventory-svc,WARN,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0232,search-api,WARN,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0190,recommendation-svc,WARN,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0030,image-cdn,ERROR,"deadlock detected updating inventory rows, transaction rolled back",code_defect,db_deadlock,reorder_locks_and_add_retry_with_backoff,yes
+E0291,recommendation-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0437,inventory-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0259,gateway,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0357,inventory-svc,INFO,GET /health 200 2ms,,,,no
+E0351,image-cdn,INFO,INFO scheduled job nightly-report started,,,,no
+E0397,user-db-proxy,INFO,GET /health 200 2ms,,,,no
+E0080,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0402,user-db-proxy,INFO,GET /favicon.ico 404 1ms,,,,no
+E0366,user-db-proxy,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0079,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0394,gateway,INFO,GET /health 200 2ms,,,,no
+E0023,image-cdn,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",dependency_failure,upstream_outage,enable_fallback_queue_and_alert_vendor,yes
+E0022,inventory-svc,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",dependency_failure,db_connection_pool_exhausted,increase_pool_size_and_add_timeout_retry,yes
+E0343,checkout-api,INFO,INFO user session refreshed,,,,no
+E0189,payments-worker,WARN,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0238,checkout-api,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0235,checkout-api,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0111,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0096,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0092,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0076,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0380,search-api,INFO,INFO scheduled job nightly-report started,,,,no
+E0084,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0188,recommendation-svc,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0260,checkout-api,INFO,GET /health 200 2ms,,,,no
+E0374,checkout-api,INFO,GET /health 200 2ms,,,,no
+E0043,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0114,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0144,user-db-proxy,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0319,recommendation-svc,INFO,INFO user session refreshed,,,,no
+E0112,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0451,gateway,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0454,user-db-proxy,INFO,INFO cache warmup complete in 120ms,,,,no
+E0074,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0413,recommendation-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0229,notification-svc,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0178,inventory-svc,ERROR,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0139,user-db-proxy,ERROR,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0125,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0187,inventory-svc,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0247,payments-worker,WARN,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0270,search-api,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0174,recommendation-svc,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0315,recommendation-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0356,payments-worker,INFO,INFO user session refreshed,,,,no
+E0261,gateway,INFO,INFO scheduled job nightly-report started,,,,no
+E0087,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0269,inventory-svc,INFO,INFO user session refreshed,,,,no
+E0248,search-api,WARN,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0020,inventory-svc,ERROR,"deadlock detected updating inventory rows, transaction rolled back",code_defect,db_deadlock,reorder_locks_and_add_retry_with_backoff,yes
+E0250,recommendation-svc,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0271,image-cdn,INFO,GET /health 200 2ms,,,,no
+E0347,image-cdn,INFO,INFO user session refreshed,,,,no
+E0004,search-api,ERROR,NullPointerException at auth.TokenValidator.verify line 88,code_defect,null_pointer,ship_hotfix_null_guard,yes
+E0197,image-cdn,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0135,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0173,gateway,ERROR,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0113,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0026,gateway,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",capacity,rate_limit_breach,add_backpressure_and_request_quota_increase,yes
+E0345,checkout-api,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0152,recommendation-svc,WARN,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0324,notification-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0033,payments-worker,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",dependency_failure,upstream_outage,enable_fallback_queue_and_alert_vendor,yes
+E0010,gateway,ERROR,"deadlock detected updating inventory rows, transaction rolled back",code_defect,db_deadlock,reorder_locks_and_add_retry_with_backoff,yes
+E0127,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0449,recommendation-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0167,gateway,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0170,user-db-proxy,WARN,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0191,auth-svc,ERROR,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0098,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0244,user-db-proxy,WARN,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0122,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0262,user-db-proxy,INFO,GET /favicon.ico 404 1ms,,,,no
+E0012,checkout-api,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",dependency_failure,db_connection_pool_exhausted,increase_pool_size_and_add_timeout_retry,yes
+E0106,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0285,image-cdn,INFO,INFO user session refreshed,,,,no
+E0234,auth-svc,WARN,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0147,image-cdn,WARN,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),,,,no
+E0062,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0303,gateway,INFO,GET /health 200 2ms,,,,no
+E0290,user-db-proxy,INFO,INFO scheduled job nightly-report started,,,,no
+E0298,auth-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0280,payments-worker,INFO,INFO cache warmup complete in 120ms,,,,no
+E0333,payments-worker,INFO,INFO cache warmup complete in 120ms,,,,no
+E0335,payments-worker,INFO,GET /favicon.ico 404 1ms,,,,no
+E0196,search-api,WARN,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0236,payments-worker,WARN,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0086,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0381,notification-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0338,user-db-proxy,INFO,INFO user session refreshed,,,,no
+E0406,inventory-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0115,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0391,search-api,INFO,GET /health 200 2ms,,,,no
+E0126,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0297,gateway,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0149,search-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0151,search-api,WARN,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0350,search-api,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0275,notification-svc,INFO,INFO user session refreshed,,,,no
+E0348,inventory-svc,INFO,INFO user session refreshed,,,,no
+E0342,gateway,INFO,GET /favicon.ico 404 1ms,,,,no
+E0316,recommendation-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0069,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0287,notification-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0202,recommendation-svc,WARN,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0088,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0242,user-db-proxy,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0219,notification-svc,WARN,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0203,image-cdn,ERROR,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0198,recommendation-svc,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0071,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0018,gateway,ERROR,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),performance,missing_index,add_index_and_review_query_plan,yes
+E0445,auth-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0035,user-db-proxy,ERROR,"disk usage 96% on /var/log, write failures beginning",resource_exhaustion,disk_full,rotate_logs_and_expand_volume,yes
+E0436,recommendation-svc,INFO,INFO user session refreshed,,,,no
+E0192,user-db-proxy,WARN,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0431,checkout-api,INFO,GET /health 200 2ms,,,,no
+E0154,search-api,WARN,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0049,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0099,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0425,search-api,INFO,GET /health 200 2ms,,,,no
+E0142,image-cdn,WARN,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0117,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0265,auth-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0121,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0124,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0251,recommendation-svc,WARN,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0389,search-api,INFO,GET /health 200 2ms,,,,no
+E0070,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0181,search-api,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0131,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0075,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0184,search-api,ERROR,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0239,payments-worker,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0414,recommendation-svc,INFO,INFO user session refreshed,,,,no
+E0040,user-db-proxy,ERROR,"deadlock detected updating inventory rows, transaction rolled back",code_defect,db_deadlock,reorder_locks_and_add_retry_with_backoff,yes
+E0410,gateway,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0412,auth-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0346,notification-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0243,search-api,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0369,auth-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0354,image-cdn,INFO,GET /favicon.ico 404 1ms,,,,no
+E0367,image-cdn,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0048,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0209,checkout-api,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0008,inventory-svc,ERROR,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),performance,missing_index,add_index_and_review_query_plan,yes
+E0160,image-cdn,WARN,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0082,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0382,payments-worker,INFO,INFO user session refreshed,,,,no
+E0015,search-api,ERROR,"disk usage 96% on /var/log, write failures beginning",resource_exhaustion,disk_full,rotate_logs_and_expand_volume,yes
+E0063,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0249,auth-svc,WARN,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0331,user-db-proxy,INFO,INFO user session refreshed,,,,no
+E0440,user-db-proxy,INFO,GET /favicon.ico 404 1ms,,,,no
+E0068,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0349,search-api,INFO,INFO scheduled job nightly-report started,,,,no
+E0105,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0433,image-cdn,INFO,GET /favicon.ico 404 1ms,,,,no
+E0409,recommendation-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0256,inventory-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0186,checkout-api,WARN,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0312,inventory-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0097,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0429,recommendation-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0212,auth-svc,ERROR,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0237,recommendation-svc,WARN,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0278,image-cdn,INFO,GET /favicon.ico 404 1ms,,,,no
+E0001,auth-svc,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,resource_exhaustion,memory_leak,restart_pod_and_raise_heap_limit,yes
+E0264,gateway,INFO,INFO user session refreshed,,,,no
+E0336,search-api,INFO,GET /health 200 2ms,,,,no
+E0060,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0326,recommendation-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0432,notification-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0162,inventory-svc,WARN,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0046,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0364,image-cdn,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0019,checkout-api,ERROR,kafka consumer lag 240000 msgs on topic payments.events,capacity,consumer_lag,scale_consumers_and_check_poison_message,yes
+E0282,image-cdn,INFO,GET /favicon.ico 404 1ms,,,,no
+E0427,image-cdn,INFO,INFO scheduled job nightly-report started,,,,no
+E0341,image-cdn,INFO,INFO scheduled job nightly-report started,,,,no
+E0254,notification-svc,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0211,inventory-svc,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0169,inventory-svc,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0083,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0054,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0165,notification-svc,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0171,auth-svc,WARN,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0376,checkout-api,INFO,INFO user session refreshed,,,,no
+E0179,image-cdn,WARN,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0411,user-db-proxy,INFO,INFO cache warmup complete in 120ms,,,,no
+E0322,payments-worker,INFO,GET /favicon.ico 404 1ms,,,,no
+E0426,search-api,INFO,GET /favicon.ico 404 1ms,,,,no
+E0224,auth-svc,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0300,search-api,INFO,INFO cache warmup complete in 120ms,,,,no
+E0093,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0143,user-db-proxy,ERROR,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),,,,no
+E0400,image-cdn,INFO,INFO scheduled job nightly-report started,,,,no
+E0266,gateway,INFO,INFO cache warmup complete in 120ms,,,,no
+E0372,user-db-proxy,INFO,INFO cache warmup complete in 120ms,,,,no
+E0090,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0328,recommendation-svc,INFO,GET /health 200 2ms,,,,no
+E0424,checkout-api,INFO,INFO user session refreshed,,,,no
+E0138,auth-svc,WARN,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0011,image-cdn,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,resource_exhaustion,memory_leak,restart_pod_and_raise_heap_limit,yes
+E0301,checkout-api,INFO,GET /health 200 2ms,,,,no
+E0295,auth-svc,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0118,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0047,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0014,auth-svc,ERROR,NullPointerException at auth.TokenValidator.verify line 88,code_defect,null_pointer,ship_hotfix_null_guard,yes
+E0129,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0310,image-cdn,INFO,INFO cache warmup complete in 120ms,,,,no
+E0166,auth-svc,WARN,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0222,inventory-svc,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0021,search-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,resource_exhaustion,memory_leak,restart_pod_and_raise_heap_limit,yes
+E0307,image-cdn,INFO,INFO cache warmup complete in 120ms,,,,no
+E0384,auth-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0340,checkout-api,INFO,INFO cache warmup complete in 120ms,,,,no
+E0253,search-api,WARN,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0277,image-cdn,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0257,checkout-api,INFO,GET /health 200 2ms,,,,no
+E0140,checkout-api,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0207,search-api,WARN,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0418,user-db-proxy,INFO,INFO cache warmup complete in 120ms,,,,no
+E0240,gateway,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0064,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0225,notification-svc,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0368,image-cdn,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0395,user-db-proxy,INFO,INFO user session refreshed,,,,no
+E0373,auth-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0158,auth-svc,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0085,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0393,gateway,INFO,GET /health 200 2ms,,,,no
+E0455,notification-svc,INFO,GET /health 200 2ms,,,,no
+E0073,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0137,recommendation-svc,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0419,recommendation-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0332,auth-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0407,notification-svc,INFO,INFO user session refreshed,,,,no
+E0279,notification-svc,INFO,INFO user session refreshed,,,,no
+E0430,recommendation-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0218,notification-svc,WARN,NullPointerException at auth.TokenValidator.verify line 88,,,,no
+E0102,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0385,notification-svc,INFO,GET /health 200 2ms,,,,no
+E0404,payments-worker,INFO,INFO scheduled job nightly-report started,,,,no
+E0388,image-cdn,INFO,INFO scheduled job nightly-report started,,,,no
+E0444,search-api,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0120,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0422,gateway,INFO,GET /favicon.ico 404 1ms,,,,no
+E0037,auth-svc,ERROR,TLS handshake failed: certificate expired for cdn.lyzr.io,config_error,expired_cert,rotate_certificate_and_add_expiry_alert,yes
+E0233,recommendation-svc,WARN,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0360,checkout-api,INFO,GET /health 200 2ms,,,,no
+E0145,auth-svc,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0362,recommendation-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0148,search-api,WARN,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0119,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0017,inventory-svc,ERROR,TLS handshake failed: certificate expired for cdn.lyzr.io,config_error,expired_cert,rotate_certificate_and_add_expiry_alert,yes
+E0448,search-api,INFO,GET /favicon.ico 404 1ms,,,,no
+E0438,image-cdn,INFO,GET /favicon.ico 404 1ms,,,,no
+E0305,gateway,INFO,INFO cache warmup complete in 120ms,,,,no
+E0353,user-db-proxy,INFO,GET /favicon.ico 404 1ms,,,,no
+E0401,auth-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0210,recommendation-svc,ERROR,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0002,checkout-api,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",dependency_failure,db_connection_pool_exhausted,increase_pool_size_and_add_timeout_retry,yes
+E0383,gateway,INFO,GET /favicon.ico 404 1ms,,,,no
+E0039,auth-svc,ERROR,kafka consumer lag 240000 msgs on topic payments.events,capacity,consumer_lag,scale_consumers_and_check_poison_message,yes
+E0283,payments-worker,INFO,INFO user session refreshed,,,,no
+E0089,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0123,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0081,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0042,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0339,recommendation-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0136,gateway,WARN,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0109,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0321,inventory-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0107,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0051,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0379,auth-svc,INFO,INFO user session refreshed,,,,no
+E0313,checkout-api,INFO,INFO user session refreshed,,,,no
+E0031,user-db-proxy,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,resource_exhaustion,memory_leak,restart_pod_and_raise_heap_limit,yes
+E0318,gateway,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0292,search-api,INFO,INFO user session refreshed,,,,no
+E0157,recommendation-svc,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0220,auth-svc,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0302,search-api,INFO,INFO scheduled job nightly-report started,,,,no
+E0153,payments-worker,WARN,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),,,,no
+E0227,inventory-svc,ERROR,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0231,notification-svc,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0195,auth-svc,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0268,image-cdn,INFO,GET /health 200 2ms,,,,no
+E0398,inventory-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0116,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0317,inventory-svc,INFO,INFO user session refreshed,,,,no
+E0405,payments-worker,INFO,GET /favicon.ico 404 1ms,,,,no
+E0306,image-cdn,INFO,INFO scheduled job nightly-report started,,,,no
+E0311,payments-worker,INFO,GET /favicon.ico 404 1ms,,,,no
+E0214,search-api,ERROR,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0392,notification-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0286,checkout-api,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0061,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0128,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0044,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0156,search-api,ERROR,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0289,gateway,INFO,GET /favicon.ico 404 1ms,,,,no
+E0416,image-cdn,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0077,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0078,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0450,gateway,INFO,INFO user session refreshed,,,,no
+E0352,checkout-api,INFO,INFO scheduled job nightly-report started,,,,no
+E0323,recommendation-svc,INFO,INFO scheduled job nightly-report started,,,,no
+E0296,inventory-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0038,image-cdn,ERROR,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),performance,missing_index,add_index_and_review_query_plan,yes
+E0443,search-api,INFO,GET /health 200 2ms,,,,no
+E0206,image-cdn,WARN,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0034,search-api,ERROR,NullPointerException at auth.TokenValidator.verify line 88,code_defect,null_pointer,ship_hotfix_null_guard,yes
+E0421,user-db-proxy,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0059,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0245,payments-worker,ERROR,"deadlock detected updating inventory rows, transaction rolled back",,,,no
+E0130,user-db-proxy,ERROR,"connection timeout to postgres after 30000ms (pool exhausted, active=100 idle=0)",,,,no
+E0027,notification-svc,ERROR,TLS handshake failed: certificate expired for cdn.lyzr.io,config_error,expired_cert,rotate_certificate_and_add_expiry_alert,yes
+E0095,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0175,payments-worker,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0226,inventory-svc,WARN,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),,,,no
+E0246,payments-worker,WARN,"HTTP 503 from upstream payments-provider, circuit breaker OPEN",,,,no
+E0241,payments-worker,ERROR,TLS handshake failed: certificate expired for cdn.lyzr.io,,,,no
+E0146,search-api,ERROR,kafka consumer lag 240000 msgs on topic payments.events,,,,no
+E0294,payments-worker,INFO,GET /favicon.ico 404 1ms,,,,no
+E0007,auth-svc,ERROR,TLS handshake failed: certificate expired for cdn.lyzr.io,config_error,expired_cert,rotate_certificate_and_add_expiry_alert,yes
+E0053,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0252,search-api,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0386,gateway,INFO,GET /health 200 2ms,,,,no
+E0327,search-api,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0453,notification-svc,INFO,INFO cache warmup complete in 120ms,,,,no
+E0358,image-cdn,INFO,INFO user session refreshed,,,,no
+E0150,image-cdn,WARN,"rate limit exceeded: 429 from search-index, 12k req/min > 10k quota",,,,no
+E0284,gateway,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
+E0028,checkout-api,ERROR,slow query 8400ms: SELECT * FROM orders WHERE user_id=? (no index),performance,missing_index,add_index_and_review_query_plan,yes
+E0024,search-api,ERROR,NullPointerException at auth.TokenValidator.verify line 88,code_defect,null_pointer,ship_hotfix_null_guard,yes
+E0141,auth-svc,ERROR,"disk usage 96% on /var/log, write failures beginning",,,,no
+E0065,checkout-api,ERROR,OutOfMemoryError: Java heap space at com.lyzr.checkout.CartService.merge,,,,no
+E0274,auth-svc,INFO,GET /favicon.ico 404 1ms,,,,no
+E0363,checkout-api,INFO,DEBUG feature-flag evaluated: new_checkout=false,,,,no
