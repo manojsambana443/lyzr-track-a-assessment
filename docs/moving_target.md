@@ -1,35 +1,35 @@
-# Moving-Target Section
+## Moving Target Section
 
-**Constraint chosen: "the cost budget is cut 40%."**
+**The change I am answering: cut the cost budget by 40 percent.**
 
-Current optimized cost is already $0.0065 for the full 455-event batch (about $0.0000143/event),
-a 97.7% cut against the naive per-event baseline — so this budget is trivially met today. The
-moving-target question that actually matters operationally is: what do we give up if we're
-forced to cut cost again once volume scales toward the 50k-events/day target, where naive-style
-per-event calling would otherwise dominate spend?
+Cost is already at $0.0065 for the whole 455 event batch, about $0.0000143 per event amortized
+across all 455, a 97.7 percent cut from the naive way of doing it. So this specific budget cut
+is already met today without changing anything. The real version of this question is what
+happens once volume grows toward the 50,000 events a day number mentioned in the assignment,
+where doing it the naive way would get expensive fast.
 
-**What gets turned off first:** nothing in the dedup or noise-routing layer — those are already
-free and are the reason cost is low. The lever we'd pull is the model tier for the escalation
-path on genuinely novel message templates the system hasn't clustered yet. Since 10 templates
-already cover 97.8% of call volume in this corpus, this mainly affects the long-tail case: a
-brand-new log message the routing layer hasn't seen before. We would run a cheaper model as the
-first pass on any new template, and only escalate to a stronger model when confidence comes back
-below threshold — safe, because the confidence gate already exists and worked correctly (zero
-false escalations across all 455 events in this run).
+**What I would turn off first: nothing in the filtering or grouping I already built.** Those are
+already free. The thing I would actually change is which model handles a brand new type of
+message the system has never seen before. Right now 10 message patterns cover the incident
+volume in this file. The cost only really shows up when a genuinely new kind of log line comes
+in that has not been grouped yet. For that case, I would try a cheaper model first, and only
+call in a stronger model if the cheap one comes back unsure. This is safe to do because the
+system already sends unsure answers to a human instead of guessing, and that safety net worked
+correctly in my testing, zero wrong guesses across all 455 events.
 
-**What it costs in accuracy:** templates already known keep their current 1.000 accuracy (they're
-matched against an established cluster, not re-reasoned from scratch on a cheaper model). The
-cost is concentrated in the cold-start case: first-pass accuracy on a brand-new, never-seen
-message on a cheaper model would be expected to soften slightly until either the confidence gate
-correctly routes it to a human, or enough occurrences accumulate that it becomes its own cluster
-and gets classified once, cheaply, like the rest.
+**What this costs in accuracy: basically nothing for message patterns I already know.** Those
+keep their current accuracy on the labeled set, since they are matched against something
+already seen, not reasoned out fresh each time. The only place accuracy could soften a little is
+on a brand new message pattern running through the cheaper model for the first time, until
+either the safety net catches it and sends it to a person, or enough of that new message shows
+up that it becomes its own known pattern and gets classified once, cheaply, like everything
+else.
 
-**Alternative constraint (latency SLO tightens to 1.5s p95):** based on what we measured, this
-would not be achievable without a fundamentally different inference path. Trace-level profiling
-showed that platform-level overhead (session/routing setup, independent of model choice) accounts
-for roughly half of the ~4s p95 latency we measured, and this floor held constant across two
-different underlying models. Hitting 1.5s would require bypassing Lyzr's hosted platform layer in
-favor of a direct, self-hosted or lower-latency inference path — a materially different
-architecture, not a configuration change. We would flag this explicitly to the customer as a
-platform-level constraint rather than attempt to tune around it, since our testing showed tuning
-does not close a gap this large.
+**The other version of this question: what if speed needed to drop to 1.5 seconds instead of 4.**
+Based on what I actually measured, I do not think this is possible without a real change in how
+the system is built, not just a setting I can flip. Digging into the trace data showed that a
+good chunk of the total time happens before the model even starts working, and that did not
+change when I swapped to a different model. Getting down to 1.5 seconds would likely mean moving
+off the hosted Lyzr platform entirely and running the model somewhere closer, which is a
+different architecture, not a quick fix. I would tell the customer this plainly rather than try
+to squeeze a gap that big out of settings alone, since my own testing showed that does not work.

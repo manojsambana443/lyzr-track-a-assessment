@@ -1,43 +1,47 @@
-# Track A Submission — Manoj Kumar Sambana
+# Track A Submission, Manoj Kumar Sambana
 
-## What's in this package
+## What is in this package
 
-- `track_a_logs.csv` — the 455-event log corpus.
-- `harness/` — the reproducible benchmark harness. Run `python3 main.py` (see `harness/README.md`)
-  against your published Lyzr agent to regenerate every number in this submission live.
-- `docs/results_table.md` — the required naive-vs-optimized results table, filled in with real
-  numbers from a full 455-event run against the live Lyzr agent.
-- `docs/optimization_writeup.md` — Part 2 deliverable #3: every lever pulled, and its measured
-  effect, plus the Studio features enabled/disabled and why.
-- `docs/moving_target.md` — Part 2 deliverable #4.
-- `docs/Lyzr_TrackA_ScopingMemo.docx` — Part 1, the one-page client scoping note.
-- `docs/lyzr_studio_build_guide.md` — the agent configuration (role, goal, instructions, schema,
-  model) as built on Lyzr Agent Studio.
+- `track_a_logs.csv`, the 455 event log corpus.
+- `harness/`, the reproducible benchmark harness. Run `python3 main.py` against my published
+  Lyzr agent to get the same numbers reported here. See `harness/README.md` for how.
+- `docs/Track_A_Results_and_Optimization.pdf`, the results table, the optimization write-up,
+  and the moving-target section, all in one document, with real numbers from a full 455 event
+  run against the live Lyzr agent.
+- `docs/Lyzr_TrackA_ScopingMemo.pdf`, the one page client scoping note, Part 1 of the
+  assignment.
+- `docs/lyzr_studio_build_guide.md`, the agent setup I used on Lyzr Agent Studio, role, goal,
+  instructions, output format, and model.
+- `docs/results_table.md`, `docs/optimization_writeup.md`, `docs/moving_target.md`, the plain
+  markdown source for the sections in the combined PDF above.
 
-## Submission checklist (per the assignment's "Submission" section)
+## Submission checklist, from the assignment's own list
 
-- [ ] **Agent Link** — grab the public link to the published agent from Lyzr Studio's Deploy tab
-      and include it here.
-- [x] **Results** — `docs/results_table.md` + `docs/optimization_writeup.md`.
-- [x] **Scoping note** — `docs/Lyzr_TrackA_ScopingMemo.docx` (verified one page).
-- [ ] **Demo** — record a <5 minute screen capture running `harness/main.py` and showing the
-      results table regenerate, or plan to do this live in the interview.
+- [ ] Agent link, get the public link from Lyzr Studio's Deploy tab and include it here.
+- [x] Results, `docs/Track_A_Results_and_Optimization.pdf`.
+- [x] Scoping note, `docs/Lyzr_TrackA_ScopingMemo.pdf`, one page.
+- [ ] Demo, record a short screen capture running `harness/main.py`, or plan to run it live.
 
-## Checked against "what will not pass the bar"
+## Checked against the assignment's "what will not pass the bar" list
 
-| Failure mode listed in the assignment | Status |
+| Thing that fails on its own | Did I do this |
 |---|---|
-| Single-input demo, no full-dataset run | Not applicable — full 455-event corpus processed, twice (naive + optimized) |
-| Metrics with no runnable harness | Not applicable — `harness/main.py` is real, working code that calls the live agent |
-| Every feature turned on with no justification | Not applicable — see the "Studio features enabled/disabled" section in the optimization write-up |
-| Optimized build with no naive baseline | Not applicable — both run on the full corpus, real numbers for both |
-| Real incidents buried in un-deduped noise, or invented remediations | Not applicable — noise filtered cleanly, 0 free-form remediations across 455 events |
-| Strong memo with no working agent, or agent with no memo | Not applicable — both present |
+| A single input demo, no full dataset run | No, the full 455 event file ran, twice, naive and optimized |
+| Metrics with no runnable harness | No, `harness/main.py` is real code that calls the live agent |
+| Every feature turned on with no reason given | No, see the Studio features section in the optimization write-up |
+| An optimized build with no naive baseline | No, both ran on the full corpus, with real numbers for both |
+| Real incidents buried in noise, or invented fixes | No, noise is filtered cleanly, and 0 fabricated remediations across all 455 events |
+| A strong memo with no working agent, or an agent with no memo | No, both are here |
 
-## Headline numbers (full 455-event corpus, live agent)
+## Headline numbers, from the full 455 event run against the live agent
 
-- Category macro-F1: **1.000** (target ≥0.85)
-- Root-cause accuracy: **1.000** (target ≥0.80)
-- Free-form remediations: **0** (target 0)
-- Cost reduction, optimized vs naive: **97.7%** (target ≥50%)
-- p95 latency: **3.9-4.3s** (target ≤4s — see note in results_table.md on why we report a range)
+- Category accuracy, on the 40 labeled events: 1.000 (target 0.85 or higher)
+- Root cause accuracy, on the 40 labeled events: 1.000 (target 0.80 or higher)
+- Fabricated remediations, across all 455 events: 0 (target 0)
+- Cost cut, optimized vs naive: 97.7 percent (target 50 percent or more)
+- p95 latency, naive: 3.91 seconds, under target
+- p95 latency, optimized: 4.29 seconds, 0.29 seconds over target, reported honestly, not
+  rounded away
+
+Full detail and honest notes on the accuracy scope, the token and cost math, and the latency
+gap are in `docs/Track_A_Results_and_Optimization.pdf`.

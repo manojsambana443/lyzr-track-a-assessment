@@ -52,7 +52,7 @@ NOISE = "NOISE_NO_ACTION"
 ESCALATE = "ESCALATE_TO_HUMAN"
 
 # Deterministic (zero-LLM-cost) noise signatures. These are structurally
-# unambiguous — health checks, static-asset 404s, debug/info telemetry —
+# unambiguous (health checks, static-asset 404s, debug/info telemetry)
 # and are the single biggest source of the ~200 noise rows in the corpus.
 # This is the "cheap-path routing for obvious noise" lever, applied BEFORE
 # any model call.
@@ -71,7 +71,7 @@ You will be given ONE log/alert event (service, severity, message).
 Decide if this is a REAL actionable incident or noise. If it is a real incident, classify it
 using ONLY the enums below. Never invent a category, root cause, or remediation that is not
 in these lists. If you are not confident (message is ambiguous, or doesn't clearly map to one
-of these root causes), set confidence low and pick your best guess anyway — the pipeline will
+of these root causes), set confidence low and pick your best guess anyway. The pipeline will
 route low-confidence answers to a human, so it is safe to be honest about uncertainty.
 
 IMPORTANT: category is fully determined by root_cause. Use this exact mapping as ground truth,
@@ -90,7 +90,7 @@ not your own judgment about what these words mean:
   expired_cert                   -> config_error
 
 First identify the root_cause from the log message, then look up its category in the table
-above — do not classify category independently of root_cause.
+above. Do not classify category independently of root_cause.
 
 CATEGORY enum: {CATEGORIES}
 ROOT_CAUSE enum: {ROOT_CAUSES}
