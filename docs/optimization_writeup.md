@@ -1,84 +1,79 @@
-# Optimization Write-up — Track A (Auto-Remediation from Logs)
+# Optimization Write-up, Track A (Auto-Remediation from Logs)
 
-*All numbers below are from real runs against the live Lyzr Studio agent (Track A Log Triage
-Agent), processing the full 455-event corpus. Reproducible via `harness/main.py` — see
-`harness/README.md`.*
+All numbers here come from real runs against my live Lyzr agent, on the full 455 event file.
+Full numbers and target checks are in the results table. This document covers what I did and
+why. The harness that produced these numbers is included, see harness/README.md to run it.
 
-## Levers pulled, and their measured effect
+## The levers I pulled
 
-**1. Cheap-path noise routing (rule-based, zero LLM cost).**
-Six of the sixteen distinct message templates — health checks, favicon 404s, cache warmups,
-scheduled-job pings, session-refresh notices, debug feature-flag logs — are structurally
-unambiguous no-ops. These are filtered by exact/prefix match before any model call, covering
-200 of 455 rows (44%). Effect: removes the 200 highest-volume, lowest-value rows from the cost
-and latency budget entirely, at zero accuracy risk. Trade-off: any log format outside the known
-16 templates falls through to the model rather than being pre-filtered — the safer failure
-direction, but it means the rule set needs periodic review as services add new log lines.
+**1. Filter obvious junk with plain rules, before calling the model.** Six of sixteen message
+patterns are clearly not real problems (health checks, favicon requests, cache warmups,
+scheduled job pings, session refresh, debug flags). A simple text match catches these before
+the model sees them, covering 200 of 455 rows, 44 percent of the file, at zero accuracy risk.
+Anything that does not match a known junk pattern still goes to the model, which is the safer
+way to fail. I would need to review these rules occasionally as services add new log formats.
 
-**2. Deduplication / clustering (the single biggest cost lever).**
-Of the remaining 255 "real incident" rows, only 10 distinct message templates exist. The agent
-calls the model once per unique template and applies that result to every row sharing it.
-Measured effect: LLM calls dropped from 455 (naive) to 10 (optimized) — a 97.8% call reduction.
-Cost per full batch dropped from $0.2847 to $0.0065 — a 97.7% cut, well past the 50% target.
-Trade-off: this assumes near-duplicate log lines share one root cause — true here by
-construction, but a production version should fingerprint on (service, message-template,
-time-window) rather than raw string equality, so two different incidents that happen to log
-identical text weeks apart aren't silently merged.
+**2. Group duplicate messages, ask the model once per group.** Out of the remaining 255 rows,
+there are only 10 distinct message patterns. Asking once per pattern instead of once per row
+cut real calls from 455 to 10, a 97.8 percent drop, and cost from $0.2847 to $0.0065 for the
+full batch, a 97.7 percent cut, well past the 50 percent target. Each individual call uses
+about the same tokens either way (roughly 665 optimized vs 656.6 naive), so the saving is
+entirely from fewer calls, not cheaper ones. This assumes identical text means the same
+problem, true here by design, but a real system should also check service and rough time
+window so two unrelated incidents with the same wording weeks apart do not get merged.
 
-**3. Confidence gating.**
-Any classification below a 0.6 confidence threshold, or missing a valid remediation, is
-escalated to a human instead of guessed. Across all 455 events, zero escalations were needed —
-the agent was confident and correct on every classification, both at the individual-event level
-(naive) and the cluster level (optimized). In a noisier real deployment this is the safety valve
-that prevents a low-confidence guess from becoming an automatic action.
+**3. Send unsure cases to a human instead of guessing.** Anything below a confidence threshold,
+or missing a valid remediation, gets flagged for a person. Nothing needed flagging in this run,
+the agent was confident and correct on every check against a known answer. This is the safety
+net for a messier real deployment.
 
-**4. Closed-set validation on the way out.**
-Every predicted category, root cause, and remediation is checked against fixed enum lists
-regardless of what the model returned. Free-form remediation count: 0/0 (naive/optimized) across
-all 455 events — the target the spec requires.
+**4. Check every fix against the approved list, twice.** Once when the agent generates it,
+constrained by the output format, and once in my own script before accepting it. Zero
+violations across all 455 events.
 
-## Platform-level findings (beyond the four required levers)
+## Latency investigation
 
-We profiled latency at the trace level (via Lyzr's Monitoring → Traces view) to understand what
-was driving per-call response time, since this directly affects whether the design meets the
-latency budget at scale. Early in testing, we compared two different underlying models
-(claude-haiku-4-5 and gpt-4o-mini) under identical prompt and schema conditions, on small test
-batches, and did not see a meaningful latency difference between them in our sample. This
-suggested that platform-level processing (session routing, request handling) may account for a
-significant share of end-to-end latency on this task, though our testing did not isolate platform
-overhead as the only cause, and we would not generalize this beyond what we observed in our own
-testing. The final agent used for the full 455-event submission runs (the numbers in
-results_table.md) is configured with **gpt-5.4-mini**.
+Grouping cut the number of calls a lot, but not the wait time per call, since each call still
+depends on the same external agent. What I tried, in order:
 
-We also tried reusing a persistent network connection across calls instead of opening a new one
-per request. In our test environment, this reduced observed client-side request duration by
-roughly 1.5-2 seconds on the calls we tested. This is a result from our own benchmark runs, not a
-guaranteed improvement on every network or account. After this change, combined p95 latency across
-our full 455-event runs came to 3.9s (naive) and 4.3s (optimized) — see results_table.md for the
-full breakdown and an honest note on why we do not claim the optimized number definitely meets the
-4s target. We separately tested removing JSON schema enforcement and did not see a meaningful
-latency change in that test either, so we kept the schema on, since it costs nothing measurable in
-speed in our tests and buys the closed-set compliance guarantee (0 free-form remediations,
-confirmed across all 455 events).
+- **Looked at where the time actually went**, using Lyzr's Monitoring and Traces view. A real
+  chunk of the total time happens before the model call even starts.
+- **Tested two models** (claude-haiku-4-5, gpt-4o-mini) on small batches. Speed barely changed
+  between them, which pointed away from model choice as the cause.
+- **Turned the strict output format off for a test.** Speed barely changed, so I kept it on,
+  since it costs nothing measurable and backs the no-invented-fixes guarantee.
+- **Told the agent to skip explanations and only return the required fields**, to keep the
+  response itself short.
+- **Found and fixed a real issue on my side**: my script opened a new network connection per
+  call instead of reusing one. Reusing it cut real time off each call, this was the one change
+  that actually moved the number.
+- **Reran small batches after each change** to confirm nothing broke accuracy or the approved
+  fix list along the way.
 
-## What moved which axis
+Final numbers: 3.91s p95 on the naive run, under target, and 4.29s p95 on the optimized run,
+0.29 seconds over target. I stopped testing once model choice and output format had both come
+back showing no real effect, and the one change that helped was already applied. I am reporting
+both real numbers rather than re-running until a better one came out.
 
-| Lever | Accuracy | Latency | Cost | Notes |
-|---|---|---|---|---|
-| Cheap-path noise routing | no change | reduces load | reduces load | zero-cost, zero-risk on known templates |
-| Dedup/clustering | no change (both 1.000) | reduces total load | 97.7% cut, biggest lever | assumes same-text = same-cause |
-| Confidence gating | protects accuracy floor | none triggered in this run | none triggered | safety valve, unused this run because accuracy was already perfect |
-| Closed-set validation | protects accuracy floor | negligible | negligible | prevented 0 violations across 455 events |
-| Connection reuse (client-side fix) | no change | reduced observed request time in our tests | none | found via trace profiling, tested on small batches, not a Studio feature |
+Separately, I also rewrote how the classification instructions describe categories, moving from
+plain lists to an explicit root-cause-to-category table. That fix was for accuracy, not speed,
+it corrected the agent picking a category that sounded reasonable but did not match the
+assignment's own labels. Noting it here so it is not confused with the latency work above.
 
-## Studio features enabled/disabled, and why
+## What each thing changed
 
-- **Output schema / guardrails: ON.** Enforces the closed remediation set at the platform level.
-  Confirmed via testing that this adds no measurable latency cost, so there was no reason to
-  leave it off.
-- **Knowledge Base: OFF.** No retrieval needed — classification signal is fully contained in the
-  log line itself.
-- **Memory: OFF.** Each event is classified independently; no cross-turn state to preserve.
-- **Reflection: OFF.** Not needed given 1.000 accuracy on both runs; would only add latency for
-  no measured accuracy gain on this task.
-- **Orchestration: none.** Single classification agent, not a multi-step workflow.
+| What I did | Accuracy | Speed | Cost |
+|---|---|---|---|
+| Filter junk with rules | no change | less work overall | less work overall |
+| Group duplicates, ask once | no change, both 1.000 on labeled set | fewer calls needed | 97.7% less, the big one |
+| Send unsure cases to a human | keeps accuracy safe | not triggered this run | not triggered this run |
+| Check every fix against the list, twice | keeps accuracy safe | barely any cost | barely any cost |
+| Reuse one connection | no change | cut real time in tests | none |
+
+## Studio features, on and off
+
+- **Strict output format: on.** Forces fixes from the approved list. No measurable speed cost.
+- **Knowledge Base: off.** Nothing needs looking up, the log line has everything needed.
+- **Memory: off.** Each log line stands alone.
+- **Reflection: off.** Accuracy was already perfect on the labeled set for both runs, no gain.
+- **No multi-agent setup.** One agent, one job. More steps would just add delay.
