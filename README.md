@@ -666,32 +666,22 @@ docs/lyzr_studio_build_guide.md
 
 ## Public Agent Link
 
-**Lyzr Agent:** ADD YOUR PUBLIC AGENT LINK HERE
+## Live Agent
+
+The Track A Log Triage Agent is deployed in Lyzr Agent Studio and can be tested here:
+
+**[Open the live agent](https://studio.lyzr.ai/create-new-agent/6a856488c45a2577ece296ca?tab=playground&public=true)**
+
+The agent accepts a log event containing the service, severity, and message, and returns:
+
+- Whether the event is an actionable incident
+- Incident category
+- Root cause
+- Approved remediation
+- Confidence score
 
 ---
 
-# Demo
-
-The demo shows the complete flow from input to results.
-
-The walkthrough covers:
-
-1. The Track A dataset
-2. The Lyzr agent configuration
-3. The naive approach
-4. The optimized approach
-5. Deterministic noise filtering
-6. Incident normalization and clustering
-7. The Python harness
-8. Live calls to the Lyzr agent
-9. The final benchmark output
-10. The naive versus optimized comparison
-
-## Demo Video
-
-**Demo:** ADD YOUR DEMO VIDEO LINK HERE
-
----
 
 # Final Summary
 
